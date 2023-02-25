@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Buscar-cep",
+    "slug": "Buscar-cep",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
