@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {},
+  "extends": "expo/tsconfig.base",
+ "rules": {
+  "react/react-in-jsx-scope": "off",
+    "indent": [
+        "error",
+        4
+    ],
+ }
+}
+
