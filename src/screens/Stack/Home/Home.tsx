@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, TextInput, TouchableOpacity, View } from 'react-native';
 import { Text } from '../../../styles/text/Text';
 import { Api } from '../../../services/Api';
 
@@ -22,13 +22,21 @@ const Home: React.FC = () => {
     const getAddress = async () => {
         await Api.get(`/${cep}/json`)
         .then(response =>{
-          setBairro(response.data.bairro);
-          setRua(response.data.logradouro);
-          setNumero('s/n');
-          setCidade(response.data.localidade);
-          setCep(response.data.cep);
-          setEstado(response.data.uf);
-            console.log(response.data);
+
+          if(response.data.uf != 'RN'){
+            Alert.alert('Não permitido', 'Não permitido buscar endereços fora do estado do Rio Grande do Norte');
+          }else{
+
+            setBairro(response.data.bairro);
+            setRua(response.data.logradouro);
+            setNumero('s/n');
+            setCidade(response.data.localidade);
+            setCep(response.data.cep);
+            setEstado(response.data.uf);
+          }
+
+          
+           
         }).catch (err => console.log(err.message));
     }
   return (
